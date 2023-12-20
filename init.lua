@@ -75,7 +75,9 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-
+  -- MY PLUGINS --
+  'ThePrimeagen/harpoon',
+  'mbbill/undotree',
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -278,6 +280,7 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -301,14 +304,17 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.o.updatetime = 50
+vim.o.timeoutlen = 100
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+vim.opt.guicursor = ''
+vim.opt.smartindent = true
 
 -- [[ Basic Keymaps ]]
 
@@ -349,6 +355,7 @@ require('telescope').setup {
     },
   },
 }
+require('telescope').load_extension('harpoon')
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -657,5 +664,9 @@ cmp.setup {
   },
 }
 
+require 'sa6i.remap'
+require 'kickstart.plugins.undotree'
+require 'kickstart.plugins.harpoon'
+require 'kickstart.plugins.fugitive'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
