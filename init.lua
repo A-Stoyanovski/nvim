@@ -77,6 +77,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
   -- MY PLUGINS --
   'ThePrimeagen/harpoon',
+  'ThePrimeagen/vim-be-good',
   'mbbill/undotree',
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -443,7 +444,25 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = {
+      'cpp',
+      'go',
+      'lua',
+      'python',
+      'javascript',
+      'vim',
+      'bash',
+      'yaml',
+      'html',
+      'css',
+      'markdown',
+      'markdown_inline',
+      'json',
+      'dockerfile',
+      'java',
+      'terraform',
+      'toml'
+      },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -453,10 +472,10 @@ vim.defer_fn(function()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<c-space>',
-        node_incremental = '<c-space>',
-        scope_incremental = '<c-s>',
-        node_decremental = '<M-space>',
+        init_selection = '<C-space>',
+        node_incremental = '<C-space>',
+        scope_incremental = false,
+        node_decremental = '<bs>',
       },
     },
     textobjects = {
